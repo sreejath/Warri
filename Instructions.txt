@@ -1,0 +1,7 @@
+Get an Input from the user
+Validate if it is a number
+Validate it is >=3
+If greater than 15, confirm if the user wants to play that many games.
+If he does, allow him to continue
+If he doesn't allow him to enter a new number (Not done in current implementation)
+
