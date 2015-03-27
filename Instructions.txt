@@ -10,4 +10,7 @@ Validate user input
 If invalid, prompt for valid input
 Once the user has selected R/P/S, have computer pick R/P/S (using random)
 If identical inform user, ask to reselect
-If different, determine who wins and
+If different, determine who wins and update the wins variables
+Continue until one player wins enough number of times to settle the game.
+
+Break
