@@ -9,8 +9,8 @@ Get validated number of games
 
 def get_games():
     """
-
-
+    This subroutine gets the number of games the user wants to play.
+    It then validates that this is an odd number 3 or higher.
     """
     n_games = 3
     select_games = True
@@ -112,6 +112,9 @@ def playRPS(n_games):
             if game_counter >= n_games:
                 break
             print("You: %d - Computer: %d" % (user_score, computer_score))
+        else:
+            print("Invalid choice. Please type Rock, Paper or Scissors")
+            continue
     print("Final Score :- You:%d - Computer:%d. %s" % (user_score, computer_score, winner))
 
 
