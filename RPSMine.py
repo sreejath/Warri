@@ -40,13 +40,11 @@ def get_games():
 
 # noinspection PyPep8Naming
 def playRPS(n_games):
-    user_choice = ""
-    computer_choice = ""
     user_score = 0
     computer_score = 0
     game_counter = 0
-    choices = ["rock", "paper", "scissors"]
     winner = ""
+    choices = ["rock", "paper", "scissors"]
     game_finished = False
     while not game_finished:
         user_choice = input("Rock, Paper, Scissors?").lower()
@@ -124,7 +122,6 @@ def playRPS(n_games):
             print("Invalid choice. Please type Rock, Paper or Scissors")
             continue
     print("Final Score :- You:%d - Computer:%d. %s" % (user_score, computer_score, winner))
-
 
 """
 Play game
