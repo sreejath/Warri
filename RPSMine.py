@@ -37,9 +37,41 @@ def getGames():
         except ArithmeticError as a:
             print(a)
             continue
+    return n_games
 
+
+def playRPS(nGames):
+
+    user_choice = ""
+    computer_choice = ""
+    user_score = 0
+    computer_score = 0
+    game_counter = 0
+    choices = ["rock", "paper", "scissors"]
+    game_finished = False
+    while not game_finished:
+        user_choice = input("Rock, Paper, Scissors?").lower()
+        computer_choice = random.choice(choices)
+        if computer_choice==user_choice:
+            print("Computer chose %s as well.\n"
+                  "Please try again." % user_choice.capitalize())
+        elif user_choice == "rock":
+            if computer_choice=="paper":
+                user_score += 1
+                print("You win")
+                if user_score > (nGames/2):
+                    break
+            else:
+                computer_score += 1
+                print("The computer wins")
+                if computer_score > (nGames/2):
+                    break
+            game_counter += 1
+            if game_counter >= nGames:
+                break
+            print("You: %d - Computer: %d" % (user_score, computer_score))
 
 """
 Play game
 """
-getGames()
+playRPS(getGames())
