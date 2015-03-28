@@ -112,6 +112,14 @@ def playRPS(n_games):
             if game_counter >= n_games:
                 break
             print("You: %d - Computer: %d" % (user_score, computer_score))
+        elif user_choice == "q":
+            user_choice = input("Are you sure you want to quit (y/n)?\n"
+                                "You have %d games remaining." % (n_games-game_counter))
+            if user_choice == "y":
+                winner = "Loser, I mean user chose to quit!"
+                break
+            else:
+                continue
         else:
             print("Invalid choice. Please type Rock, Paper or Scissors")
             continue
