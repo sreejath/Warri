@@ -1,19 +1,15 @@
 __author__ = 'sreejath'
 import random
 
-"""
-Get validated number of games
-
-"""
-
 
 def get_games():
+
     """
     This subroutine gets the number of games the user wants to play.
     It then validates that this is an odd number 3 or higher.
     """
-    n_games = 3
-    select_games = True
+    n_games = 3  # Initialized to 3, because, well why not?
+    select_games = True  # Boolean to control the while loop
     print("Welcome to Rock, Paper Scissors.")
     while select_games:
 
@@ -111,17 +107,23 @@ def playRPS(n_games):
                 break
             print("You: %d - Computer: %d" % (user_score, computer_score))
         elif user_choice == "q":
-            user_choice = input("Are you sure you want to quit (y/n)?\n"
-                                "You have %d games remaining." % (n_games-game_counter))
-            if user_choice == "y":
-                winner = "Loser, I mean user chose to quit!"
-                break
-            else:
-                continue
+            user_quit = False
+            while not user_quit:
+                user_choice = input("Are you sure you want to quit (y/n)?\n"
+                                    "You have %d games remaining." % (n_games-game_counter)).lower()
+                if user_choice == "y" or user_choice == "yes":
+                    winner = "Loser, I mean user chose to quit!"
+                    break
+                elif user_choice == "n" or user_choice == "no" :
+                    break
+                else:
+                    print("Invalid choice. Please type yes/no (or y/n)")
+                    continue
         else:
             print("Invalid choice. Please type Rock, Paper or Scissors")
             continue
     print("Final Score :- You:%d - Computer:%d. %s" % (user_score, computer_score, winner))
+
 
 """
 Play game
