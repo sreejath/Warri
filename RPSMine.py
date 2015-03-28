@@ -1,6 +1,4 @@
 __author__ = 'sreejath'
-import sys
-import math
 import random
 
 """
@@ -9,15 +7,15 @@ Get validated number of games
 """
 
 
-def getGames():
+def get_games():
     """
 
 
     """
     n_games = 3
-    selectGames = True
+    select_games = True
     print("Welcome to Rock, Paper Scissors.")
-    while selectGames:
+    while select_games:
 
         try:
             n_games = int(input("Please enter the number of games you would like to play:"))
@@ -30,8 +28,8 @@ def getGames():
                 raise ArithmeticError(
                     "To determine a clear winner, we must play an odd number of games.\n"
                     "Please enter an odd number that is three or higher.")
-            selectGames = False
-        except ValueError as v:
+            select_games = False
+        except ValueError:
             print("Please enter an odd number greater than or equal to 3.")
             continue
         except ArithmeticError as a:
@@ -40,38 +38,84 @@ def getGames():
     return n_games
 
 
-def playRPS(nGames):
-
+# noinspection PyPep8Naming
+def playRPS(n_games):
     user_choice = ""
     computer_choice = ""
     user_score = 0
     computer_score = 0
     game_counter = 0
     choices = ["rock", "paper", "scissors"]
+    winner = ""
     game_finished = False
     while not game_finished:
         user_choice = input("Rock, Paper, Scissors?").lower()
         computer_choice = random.choice(choices)
-        if computer_choice==user_choice:
+        if computer_choice == user_choice:
             print("Computer chose %s as well.\n"
-                  "Please try again." % user_choice.capitalize())
+                  "Please try again." % user_choice)
+
+        # User chose Rock
         elif user_choice == "rock":
-            if computer_choice=="paper":
+            if computer_choice == "paper":
                 user_score += 1
-                print("You win")
-                if user_score > (nGames/2):
+                print("You win this round")
+                if user_score > (n_games / 2):
+                    winner = "You win!"
                     break
             else:
                 computer_score += 1
-                print("The computer wins")
-                if computer_score > (nGames/2):
+                print("The computer wins this round")
+                if computer_score > (n_games / 2):
+                    winner = "The Computer wins!"
                     break
             game_counter += 1
-            if game_counter >= nGames:
+            if game_counter >= n_games:
                 break
             print("You: %d - Computer: %d" % (user_score, computer_score))
+
+        # User chose Paper
+
+        elif user_choice == "paper":
+            if computer_choice == "rock":
+                user_score += 1
+                print("You win this round")
+                if user_score > (n_games / 2):
+                    winner = "You win!"
+                    break
+            else:
+                computer_score += 1
+                print("The computer wins this round")
+                if computer_score > (n_games / 2):
+                    winner = "The Computer wins!"
+                    break
+            game_counter += 1
+            if game_counter >= n_games:
+                break
+            print("You: %d - Computer: %d" % (user_score, computer_score))
+
+        # User chose Scissors
+        elif user_choice == "scissors":
+            if computer_choice == "paper":
+                user_score += 1
+                print("You win this round")
+                if user_score > (n_games / 2):
+                    winner = "You win!"
+                    break
+            else:
+                computer_score += 1
+                print("The computer wins this round")
+                if computer_score > (n_games / 2):
+                    winner = "The Computer wins!"
+                    break
+            game_counter += 1
+            if game_counter >= n_games:
+                break
+            print("You: %d - Computer: %d" % (user_score, computer_score))
+    print("Final Score :- You:%d - Computer:%d. %s" % (user_score, computer_score, winner))
+
 
 """
 Play game
 """
-playRPS(getGames())
+playRPS(get_games())
