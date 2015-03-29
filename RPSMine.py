@@ -50,7 +50,7 @@ def playRPS(n_games):
                   "Please try again." % user_choice)
 
         # User chose Rock
-        elif user_choice == "rock":
+        elif "rock" == user_choice:
             if computer_choice == "paper":
                 user_score += 1
                 print("You win this round")
@@ -70,7 +70,7 @@ def playRPS(n_games):
 
         # User chose Paper
 
-        elif user_choice == "paper":
+        elif "paper" == user_choice:
             if computer_choice == "rock":
                 user_score += 1
                 print("You win this round")
@@ -89,7 +89,7 @@ def playRPS(n_games):
             print("You: %d - Computer: %d" % (user_score, computer_score))
 
         # User chose Scissors
-        elif user_choice == "scissors":
+        elif "scissors" == user_choice:
             if computer_choice == "paper":
                 user_score += 1
                 print("You win this round")
@@ -106,7 +106,7 @@ def playRPS(n_games):
             if game_counter >= n_games:
                 break
             print("You: %d - Computer: %d" % (user_score, computer_score))
-        elif user_choice == "q":
+        elif "q" == user_choice:
             user_quit = False
             while not user_quit:
                 user_choice = input("Are you sure you want to quit (y/n)?\n"
