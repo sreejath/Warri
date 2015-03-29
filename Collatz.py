@@ -1,5 +1,5 @@
 __author__ = 'sreejath'
-# Collatz
+# Collatz implementation
 
 def number_entry():
     seed = 0
