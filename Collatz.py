@@ -31,6 +31,6 @@ def collatz(seed):
             seed = (seed * 3) + 1
         steps += 1
         print(seed)
-    print(steps)
+    print("Steps to solution: %s" % steps)
 
 collatz(number_entry())
