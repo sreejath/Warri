@@ -10,7 +10,9 @@ def get_games():
     """
     n_games = 3  # Initialized to 3, because, well why not?
     select_games = True  # Boolean to control the while loop
-    print("Welcome to Rock, Paper Scissors.")
+    print("Welcome to Rock, Paper Scissors.\n"
+          "Type 'o' at any time to see game options\n"
+          "Type 'q' at any time to quit the game'")
     while select_games:
 
         try:
@@ -47,19 +49,19 @@ def playRPS(n_games):
         computer_choice = random.choice(choices)
         if computer_choice == user_choice:
             print("Computer chose %s as well.\n"
-                  "Please try again." % user_choice)
+                  "Please try again." % user_choice.capitalize())
 
         # User chose Rock
         elif "rock" == user_choice:
-            if computer_choice == "paper":
+            if computer_choice == "scissors":
                 user_score += 1
-                print("You win this round")
+                print("The computer chose Scissors. You win this round")
                 if user_score > (n_games / 2):
                     winner = "You win!"
                     break
             else:
                 computer_score += 1
-                print("The computer wins this round")
+                print("The computer chose Paper. The computer wins this round")
                 if computer_score > (n_games / 2):
                     winner = "The Computer wins!"
                     break
@@ -73,13 +75,13 @@ def playRPS(n_games):
         elif "paper" == user_choice:
             if computer_choice == "rock":
                 user_score += 1
-                print("You win this round")
+                print("The Computer chose Rock. You win this round")
                 if user_score > (n_games / 2):
                     winner = "You win!"
                     break
             else:
                 computer_score += 1
-                print("The computer wins this round")
+                print("The Computer chose Scissors. The computer wins this round")
                 if computer_score > (n_games / 2):
                     winner = "The Computer wins!"
                     break
@@ -92,13 +94,13 @@ def playRPS(n_games):
         elif "scissors" == user_choice:
             if computer_choice == "paper":
                 user_score += 1
-                print("You win this round")
+                print("The Computer chose Paper. You win this round")
                 if user_score > (n_games / 2):
                     winner = "You win!"
                     break
             else:
                 computer_score += 1
-                print("The computer wins this round")
+                print("The Computer chose Rock. The computer wins this round")
                 if computer_score > (n_games / 2):
                     winner = "The Computer wins!"
                     break
@@ -109,16 +111,34 @@ def playRPS(n_games):
         elif "q" == user_choice:
             user_quit = False
             while not user_quit:
-                user_choice = input("Are you sure you want to quit (y/n)?\n"
+                user_choice = input("WHAT?!!! Are you sure you want to quit (y/n)?\n"
                                     "You have %d games remaining." % (n_games-game_counter)).lower()
                 if user_choice == "y" or user_choice == "yes":
                     winner = "Loser, I mean user chose to quit!"
+                    game_finished = True
                     break
-                elif user_choice == "n" or user_choice == "no" :
+                elif user_choice == "n" or user_choice == "no":
                     break
                 else:
                     print("Invalid choice. Please type yes/no (or y/n)")
                     continue
+        elif "o" == user_choice:
+            in_options = True
+            while in_options:
+                selected_option = input("Press 's' to see current score\n"
+                                        "Press 'q' to quit the game\n"
+                                        "Press 'b' to go back to the game")
+
+                if 's' == selected_option:
+                    print("The current score is You %d - Computer %d %d games out of %d remain"
+                          % (user_score, computer_score, (n_games-computer_score-user_score), n_games))
+                    continue
+                elif "b" == selected_option:
+                    break
+                else:
+                    print("Not implemented yet")
+                    break
+
         else:
             print("Invalid choice. Please type Rock, Paper or Scissors")
             continue
