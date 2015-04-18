@@ -1,6 +1,7 @@
 __author__ = 'sreejath'
 # Collatz implementation
 
+
 def number_entry():
     seed = 0
     not_entered = True
