@@ -1,7 +1,6 @@
 __author__ = 'sreejath'
 import random
 
-
 def get_games():
 
     """
@@ -16,8 +15,25 @@ def get_games():
     while select_games:
 
         try:
-            n_games = int(input("Please enter the number of games you would like to play:"))
 
+            s_games = input("Please enter the number of games you would like to play:")
+            if "o" == s_games:
+                print("options")
+                continue
+            elif "q" == s_games:
+                s_Confirm = input("Are you sure you want to quit? (y/n)")
+                b_UserQuit = False
+                while not b_UserQuit:
+                    if "y" == s_Confirm:
+                        print("The user has opted quit even before the game began!")
+                        exit(0)
+                    elif "n" == s_Confirm:
+                        print("Bravo!")
+                        break
+                    else:
+                        print("Please enter y or n.")
+                        continue
+            n_games = int(s_games)
             if n_games < 3:
                 raise ArithmeticError(
                     "To be fair, we need to play at least three games.\n"
@@ -28,7 +44,8 @@ def get_games():
                     "Please enter an odd number that is three or higher.")
             select_games = False
         except ValueError:
-            print("Please enter an odd number greater than or equal to 3.")
+            if not(s_games == 'o' or s_games == 'q'):
+                print("Please enter an odd number greater than or equal to 3.")
             continue
         except ArithmeticError as a:
             print(a)
