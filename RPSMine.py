@@ -8,31 +8,14 @@ def get_games():
     It then validates that this is an odd number 3 or higher.
     """
     n_games = 3  # Initialized to 3, because, well why not?
-    select_games = True  # Boolean to control the while loop
-    print("Welcome to Rock, Paper Scissors.\n"
-          "Type 'o' at any time to see game options\n"
-          "Type 'q' at any time to quit the game'")
+    print("Welcome to Rock, Paper Scissors.\n")
+
     while select_games:
 
         try:
 
             s_games = input("Please enter the number of games you would like to play:")
-            if "o" == s_games:
-                print("options")
-                continue
-            elif "q" == s_games:
-                s_Confirm = input("Are you sure you want to quit? (y/n)")
-                b_UserQuit = False
-                while not b_UserQuit:
-                    if "y" == s_Confirm:
-                        print("The user has opted quit even before the game began!")
-                        exit(0)
-                    elif "n" == s_Confirm:
-                        print("Bravo!")
-                        break
-                    else:
-                        print("Please enter y or n.")
-                        continue
+
             n_games = int(s_games)
             if n_games < 3:
                 raise ArithmeticError(
@@ -42,18 +25,21 @@ def get_games():
                 raise ArithmeticError(
                     "To determine a clear winner, we must play an odd number of games.\n"
                     "Please enter an odd number that is three or higher.")
-            select_games = False
+                select_games = False
+
         except ValueError:
-            if not(s_games == 'o' or s_games == 'q'):
-                print("Please enter an odd number greater than or equal to 3.")
+            print("Please enter an odd number greater than or equal to 3.")
             continue
         except ArithmeticError as a:
             print(a)
             continue
-    return n_games
+
+        return n_games
+
 
 
 # noinspection PyPep8Naming
+    select_games = True  # Boolean to control the while loop
 def playRPS(n_games):
     user_score = 0
     computer_score = 0
